@@ -12,7 +12,7 @@ metadata:
   name: "test_python_webapp_depoyment-deployment"
   labels:
     app: "test_python_webapp_depoyment"
-    owner: "patechoc"
+    owner: "Patechoc"
 spec:
   replicas: 1
   selector:
@@ -25,7 +25,8 @@ spec:
     spec:
       containers:
         - name: "test_python_webapp_depoyment"
-          image: ghcr.io/patechoc/test_python_webapp_depoyment:02f5ba5-20260304131644
+          image: ghcr.io/Patechoc/test_python_webapp_depoyment:latest
+
           ports:
             - containerPort: 3000
           # minimal resources as this is just a test            
