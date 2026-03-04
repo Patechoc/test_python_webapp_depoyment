@@ -72,20 +72,21 @@ jobs:
           # Extract username and repo name from the full repository name
           # This is used for correctly formatting the image reference
           REPO_FULL_NAME="${{ github.repository }}"
-          echo "GITHUB_USERNAME=$(echo $REPO_FULL_NAME | cut -d'/' -f1)" >> $GITHUB_ENV
-          echo "REPO_NAME=$(echo $REPO_FULL_NAME | cut -d'/' -f2)" >> $GITHUB_ENV
+          echo "GITHUB_USERNAME=$(echo $REPO_FULL_NAME | cut -d'/' -f1 | tr '[:upper:]' '[:lower:]')" >> $GITHUB_ENV
+          echo "REPO_NAME=$(echo $REPO_FULL_NAME | cut -d'/' -f2 | tr '[:upper:]' '[:lower:]')" >> $GITHUB_ENV
+          echo "REPO_FULL_NAME_LOWER=$(echo $REPO_FULL_NAME | tr '[:upper:]' '[:lower:]')" >> $GITHUB_ENV
       
       - name: Build and push Docker image
         run: |
           # Build and push with the unique tag
           echo "Building and pushing image with tag: ${{ env.IMAGE_TAG }}"
-          docker build -t ghcr.io/${{ github.repository }}:${{ env.IMAGE_TAG }} .
-          docker push ghcr.io/${{ github.repository }}:${{ env.IMAGE_TAG }}
+          docker build -t ghcr.io/${{ env.REPO_FULL_NAME_LOWER }}:${{ env.IMAGE_TAG }} .
+          docker push ghcr.io/${{ env.REPO_FULL_NAME_LOWER }}:${{ env.IMAGE_TAG }}
           
           # Also update latest tag for reference
           echo "Updating latest tag to point to the new image"
-          docker tag ghcr.io/${{ github.repository }}:${{ env.IMAGE_TAG }} ghcr.io/${{ github.repository }}:latest
-          docker push ghcr.io/${{ github.repository }}:latest
+          docker tag ghcr.io/${{ env.REPO_FULL_NAME_LOWER }}:${{ env.IMAGE_TAG }} ghcr.io/${{ env.REPO_FULL_NAME_LOWER }}:latest
+          docker push ghcr.io/${{ env.REPO_FULL_NAME_LOWER }}:latest
       
       - name: Update Kubernetes manifest
         run: |
