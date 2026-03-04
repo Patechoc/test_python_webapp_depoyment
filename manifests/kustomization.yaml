@@ -21,10 +21,10 @@ resources:
 # Add common labels to all resources
 commonLabels:
   app: "test_python_webapp_depoyment"
-  owner: "Patechoc"
+  owner: "patechoc"
   managed-by: argocd
 
 # Add common annotations to all resources
 commonAnnotations:
   description: "Deployed via Urbalurba infrastructure"
-  repository: "https://github.com/Patechoc/test_python_webapp_depoyment"
+  repository: "https://github.com/patechoc/test_python_webapp_depoyment"
