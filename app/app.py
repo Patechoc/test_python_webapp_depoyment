@@ -16,7 +16,7 @@ def hello_world():
     # Format the current time to a string "Time: HH:MM:SS Date: DD/MM/YYYY"
     time_date_string = datetime.now().strftime('Time: %H:%M:%S Date: %d/%m/%Y')
     
-    return f'Hello world Terje & Patrick again and again! Template: python-basic-webserver. {time_date_string}'
+    return f'Hello world Terje & Patrick again and again and again! Template: python-basic-webserver. {time_date_string}'
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=port, debug=True)
