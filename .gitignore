@@ -1,2 +1,26 @@
 # DevContainer Toolbox - credentials folder (NEVER commit)
 .devcontainer.secrets/
+
+# Added from template python-basic-webserver
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+env/
+venv/
+.venv/
+.env
+.coverage
+htmlcov/
+.pytest_cache/
+.mypy_cache/
+*.egg-info/
+dist/
+build/
+.idea/
+.vscode/
+*.swp
+*.swo
+.DS_Store
+Thumbs.db
