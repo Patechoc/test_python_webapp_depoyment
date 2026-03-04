@@ -25,7 +25,7 @@ spec:
     spec:
       containers:
         - name: "test_python_webapp_depoyment"
-          image: ghcr.io/Patechoc/test_python_webapp_depoyment:latest
+          image: ghcr.io/patechoc/test_python_webapp_depoyment:latest
 
           ports:
             - containerPort: 3000
